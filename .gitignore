@@ -8,6 +8,8 @@
 .idea/**/tasks.xml
 .idea/dictionaries
 
+.pnpm-store
+
 # Sensitive or high-churn files:
 .idea/**/dataSources/
 .idea/**/dataSources.ids
@@ -395,6 +397,8 @@ Temporary Items
 =======
 # Local
 .env
+.env.development
+.env.test
 dist
 .webpack
 .serverless/**/*.zip

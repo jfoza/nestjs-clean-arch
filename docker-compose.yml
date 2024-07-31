@@ -1,0 +1,24 @@
+version: "3.9"
+
+networks:
+  traefik_network:
+    external: true
+
+services:
+
+  app-dev:
+    container_name: nestjs-clean-arch-app-dev
+    build:
+      context: .
+      dockerfile: docker/node/Dockerfile
+    image: nestjs-clean-arch-app-dev
+    volumes:
+      - .:/var/www/html
+    networks:
+      - traefik_network
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.nestjs-clean-arch-app-dev.rule=Host(`app-nestjs-clean-arch.docker.localhost`)"
+      - "traefik.http.services.nestjs-clean-arch-app-dev.loadbalancer.server.port=3000"
+      - "traefik.http.routers.nestjs-clean-arch-app-dev.tls=true"
+    restart: always
